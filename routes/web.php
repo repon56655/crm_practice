@@ -40,7 +40,7 @@ Route::get('/customerLogManageView',[CustomerController::class,'customerLogManag
 Route::get('/customerLogEdit/{id}',[CustomerController::class,'customerLogEdit'])->name("customerLogEdit");
 Route::post('/customerLogUpdate/{id}',[CustomerController::class,'customerLogUpdate'])->name("customerLogUpdate");
 Route::get('/customerLogDelete/{id}',[CustomerController::class,'customerLogDelete'])->name("customerLogDelete");
-Route::post('/changeStatus',[CustomerController::class,'changeStatus'])->name("changeStatus");
+Route::get('/customer_changeStatus',[CustomerController::class,'customer_changeStatus'])->name("customer.changestatus");
 
 
 

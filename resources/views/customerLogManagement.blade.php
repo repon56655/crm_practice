@@ -33,18 +33,18 @@
                         <td>{{ $customer->name }}</td>
                         <td>
                             @if($customer->status == 1)
-                                <button class="btn btn-danger" id="status_<?php echo $key ?>"  onclick='chnageStatus("<?php echo $customer->status ?>", "<?php echo $key ?>")'>Incomplete</button>
+                                <button class="btn btn-danger" id="status_<?php echo $customer->id ?>"  onclick='chnageStatus("<?php echo $customer->status ?>", "<?php echo $customer->id ?>")'>Incomplete</button>
                             @else
-                                <button class="btn btn-success" id="status_<?php echo $key ?>"  onclick='chnageStatus("<?php echo $customer->status ?>", "<?php echo $key ?>")'>Complete</button>
+                                <button class="btn btn-success" id="status_<?php echo $customer->id ?>"  onclick='chnageStatus("<?php echo $customer->status ?>", "<?php echo $customer->id ?>")'>Complete</button>
                             @endif
                             
                             
                         </td>
                         <td>
-                            <a href="{{ route('customerLogEdit',$customer->id) }}" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square "></i></a>
+                            <a href="{{ route('customerLogEdit',$customer->id) }}" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square "></i> Edit</a>
                         </td>
                         <td>
-                            <a href="{{ route('customerLogDelete',$customer->id) }}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
+                            <a href="{{ route('customerLogDelete',$customer->id) }}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i> Delete</a>
                         </td>
                     </tr>
               
@@ -63,37 +63,36 @@
             var new_id;
             if(status_id == 1){
                 new_id = 2;
-                $('#status_'+serial_number).html('complete');
+                $('#status_'+serial_number).html('Complete');
                 $('#status_'+serial_number).removeClass("btn-danger");
                 $('#status_'+serial_number).addClass("btn-success");
-
-
-            }else if(status_id == 2){
+            }
+            else if(status_id == 2){
                 new_id = 1;
                 $('#status_'+serial_number).html('Incomplete');
                 $('#status_'+serial_number).addClass("btn-danger");
                 $('#status_'+serial_number).removeClass("btn-success");
 
             }
-            //send ajax post request
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                url: '/changeStatus',
-                data: {
-                    'status_id': new_id
-                },
-                success: function(data){
-                    console.log(data);
-                //console.log(data.success)
-                }
-            });
+            var data = {
+                customer_id:serial_number,
+                change_status_value:new_id
+            }
 
+            //send ajax post request
+            $.ajax({
+                type: "GET",
+                url: "{{route('customer.changestatus')}}",
+                data: data,
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+            
+
+
+            //==========Ajax Update part=================
+           
             
             
         }

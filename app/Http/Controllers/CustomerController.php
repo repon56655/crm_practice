@@ -111,13 +111,21 @@ class CustomerController extends Controller
         return redirect()->route("customerLogManageView");
         
     }
-    public function changeStatus(Request $request)
+
+    public function customer_changeStatus(Request $request)
     {
-        return 1;
-        // $customer = customerLogDetails::find($id);
-        // $customer->status = $request->status;
-        // $customer->save();
-  
-        //return response()->json(['success'=>'Status change successfully.']);
+
+        $customer = customerLogDetails::find( $request->customer_id);
+
+        $customer->status = $request->change_status_value;
+
+        $customer->update();
+        return response()->json([
+            'status' => 'updated'
+        ]);
+
+
     }
+
+   
 }
