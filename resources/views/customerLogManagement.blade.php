@@ -21,7 +21,7 @@
                     <th scope="col">Title</th>
                     <th scope="col">Name</th>
                     <th scope="col">Status</th>
-                    <th scope="col" colspan="2">Action</th>
+                    <th scope="col" colspan="2" class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>

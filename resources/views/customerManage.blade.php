@@ -22,7 +22,7 @@
                     <th scope="col">Phone</th>
                     <th scope="col">Email</th>
                     <th scope="col">Address</th>
-                    <th scope="col" colspan="2">Action</th>
+                    <th scope="col" colspan="2" class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,10 +35,10 @@
                         <td>{{ $data->email }}</td>
                         <td>{{ $data->address }}</td>
                         <td>
-                            <a href="{{ route('editCustomer',$data->id) }}" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square "></i></a>
+                            <a href="{{ route('editCustomer',$data->id) }}" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square "></i> Edit</a>
                         </td>
                         <td>
-                            <a href="{{ route('deleteCustomer',$data->id) }}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
+                            <a href="{{ route('deleteCustomer',$data->id) }}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i> Delete</a>
                         </td>
                     </tr>
                 <?php $sl++; ?>
