@@ -31,7 +31,7 @@
                     <input type="text" name="name" value="{{ $customer->name }}" class="form-control" id="phone">
             </div>
             <div class="mb-3">
-                    <select class="form-select" aria-label="Default select example" name="status">
+                    <select class="form-select text-center" aria-label="Default select example" name="status">
                         <option value="0"  >-----Select Option-----</option>
                         <option value="1" @if ($customer->status==1)selected @endif>Incomplete</option>
                         <option value="2" @if ($customer->status==2)selected @endif>Complete</option>
@@ -39,7 +39,7 @@
             </div>
             <div class="mb-3">
                 <label for="floatingTextarea2">Comments</label>
-                <textarea class="form-control" id="floatingTextarea2" name="comment" style="height: 100px">{{ $customer->title }}</textarea>
+                <textarea class="form-control" id="floatingTextarea2" name="comment" style="height: 100px">{{ $customer->comment }}</textarea>
                 
             </div>
                 <button type="submit" class="btn btn-success">Update</button>

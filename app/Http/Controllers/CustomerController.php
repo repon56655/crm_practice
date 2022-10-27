@@ -108,10 +108,8 @@ class CustomerController extends Controller
         $customer = customerLogDetails::find($id);
 
         $customer->delete();
-        return redirect()->route("customerLogManageView");
-        
+        return redirect()->route("customerLogManageView");  
     }
-
     public function customer_changeStatus(Request $request)
     {
 
@@ -123,9 +121,5 @@ class CustomerController extends Controller
         return response()->json([
             'status' => 'updated'
         ]);
-
-
     }
-
-   
 }
