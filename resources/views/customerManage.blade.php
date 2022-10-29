@@ -13,6 +13,9 @@
     <div class="col-md-6 offset-md-3">
 
             <a href="{{ route('addCustomer') }}" class="btn btn-success btn-sm my-3">Add Customer</a>
+            <a href="{{ route('manageCustomer') }}" class="btn btn-success btn-sm my-3">Manage Customer</a>
+            <a href="{{ route('customerLogAdd') }}" class="btn btn-success btn-sm my-3">Add Customer Log</a>
+            <a href="{{ route('customerLogManageView') }}" class="btn btn-success btn-sm my-3">Manage Customer Log</a>
     
         <table class="table table-dark table-striped">
             <thead>

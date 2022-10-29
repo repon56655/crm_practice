@@ -13,7 +13,10 @@
 
     <div class="col-md-4 offset-md-4">
 
-        <a href="{{ route('manageCustomer') }}" class="btn btn-success btn-sm my-3">Manage Customer</a>
+            <a href="{{ route('addCustomer') }}" class="btn btn-success btn-sm my-3">Add Customer</a>
+            <a href="{{ route('manageCustomer') }}" class="btn btn-success btn-sm my-3">Manage Customer</a>
+            <a href="{{ route('customerLogAdd') }}" class="btn btn-success btn-sm my-3">Add Customer Log</a>
+            <a href="{{ route('customerLogManageView') }}" class="btn btn-success btn-sm my-3">Manage Customer Log</a>
 
         <form action="{{ Route('storeCustomer') }}" method="post">
             @csrf
