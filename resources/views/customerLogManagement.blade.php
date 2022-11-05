@@ -62,24 +62,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
-        function chnageStatus(status_id, serial_number){
-            var new_id;
-            if(status_id == 1){
-                new_id = 2;
-                $('#status_'+serial_number).html('Complete');
-                $('#status_'+serial_number).removeClass("btn-danger");
-                $('#status_'+serial_number).addClass("btn-success");
-            }
-            else if(status_id == 2){
-                new_id = 1;
-                $('#status_'+serial_number).html('Incomplete');
-                $('#status_'+serial_number).addClass("btn-danger");
-                $('#status_'+serial_number).removeClass("btn-success");
-
-            }
+        function chnageStatus(status, serial_number){
             var data = {
-                customer_id:serial_number,
-                change_status_value:new_id
+                customer_id:serial_number
             }
 
             //send ajax post request
@@ -89,14 +74,26 @@
                 data: data,
                 success: function (response) {
                     console.log(response);
+                    if(response.status == 1){
+                        $('#status_'+response.serial_number).html('Incomplete');
+                        $('#status_'+response.serial_number).addClass("btn-danger");
+                        $('#status_'+response.serial_number).removeClass("btn-success");
+
+                 
+                    }
+                    else if(response.status == 2){
+                        $('#status_'+response.serial_number).html('Complete');
+                        $('#status_'+response.serial_number).removeClass("btn-danger");
+                        $('#status_'+response.serial_number).addClass("btn-success");
+                    }
+                   
+                    
                 }
             });
             
-
-
             //==========Ajax Update part=================
            
-            
+
             
         }
       

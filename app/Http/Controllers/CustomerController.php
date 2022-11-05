@@ -114,12 +114,19 @@ class CustomerController extends Controller
     {
 
         $customer = customerLogDetails::find( $request->customer_id);
-
-        $customer->status = $request->change_status_value;
-
+        if($customer->status == 1){
+            $customer->status = 2;
+            $status = 2;
+        }
+        else{
+            $customer->status = 1;
+            $status = 1;
+        }
+    
         $customer->update();
         return response()->json([
-            'status' => 'updated'
+            'status' => $status,
+            'serial_number' => $request->customer_id
         ]);
     }
 }
